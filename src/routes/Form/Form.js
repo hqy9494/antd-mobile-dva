@@ -58,15 +58,37 @@ originbodyScrollY = document.getElementsByTagName('body')[0].style.overflowY;
       show: false,
       config: {},
       money1: 0,
-      money2: 13655555555,
+      money2: 0,
       control: 8888888888888888,
-      startTime: '2018-06-06 19:56:25',
-      endTime: '2018-06-09 06:26:44'
+      startTime: '',
+      endTime: '',
+      field:[],
       }
   }
   
   componentDidMount() {
-    
+    const that = this
+    axios({
+      method: 'get',
+      url: 'http://localhost:3000/adv/findForm',
+    })
+    .then(function (response) {
+      let dt = response.data;
+      console.log('response',dt)
+      // alert("更新完成");
+      that.setState({
+        money1: dt.money1,
+        money2: dt.money2,
+        control: dt.control,
+        files: dt.files,
+        startTime: dt.startTime,
+        endTime: dt.endTime,
+      })
+    })
+    .catch(function (error) {
+      console.log('error',error);
+    });
+
   }
 
   componentDidUpdate() {
@@ -97,20 +119,19 @@ originbodyScrollY = document.getElementsByTagName('body')[0].style.overflowY;
       }
 
       handleSumit = () => {
+        const that = this;
         this.props.form.validateFields({ force: true }, (error) => {
             if (!error) {
               let dt = {...this.props.form.getFieldsValue(),startTime:this.state.startTime,endTime:this.state.endTime,files:this.state.files};
               console.log(dt)
               axios({
-                method: 'put',
-                url: 'http://localhost:3000/adv/update',
+                method: 'post',
+                url: 'http://localhost:3000/adv/updateForm',
               })
               .then(function (response) {
                 let dt = response.data;
                 alert("更新完成");
-                this.setState({
-
-                })
+                console.log(dt)
               })
               .catch(function (error) {
                 console.log('error',error);
@@ -260,7 +281,7 @@ originbodyScrollY = document.getElementsByTagName('body')[0].style.overflowY;
                 />
                 {get}
                 <ImagePicker
-                    files={files}
+                    files={this.state.files}
                     onChange={this.onChange}
                     onImageClick={(index, fs) => console.log(index, fs)}
                     selectable={files.length < 7}

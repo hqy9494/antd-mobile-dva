@@ -6,9 +6,10 @@ const formSchema = new Schema({
     id:ObjectId,
     money1:Number,
     money2:Number,
-    image:Number,
+    files:Array,
     control:String,
-    date:Number
+    startTime: String,
+    endTime: String
 })
 //发布模型
-mongoose.model('Form',goodsSchema)
+mongoose.model('Form',formSchema)

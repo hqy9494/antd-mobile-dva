@@ -129,7 +129,7 @@ class Reflash extends Component{
       setTimeout(() => {
         axios({
           method: 'get',
-          url: 'http://localhost:3000/adv/find',
+          url: 'http://localhost:3000/adv/findAdv',
         })
         .then(function (response) {
           let dt = response.data;
@@ -153,7 +153,7 @@ class Reflash extends Component{
       let that = this;
       axios({
         method: 'get',
-        url: 'http://localhost:3000/adv/find',
+        url: 'http://localhost:3000/adv/findAdv',
       })
       .then(function (response) {
         let dt = response.data;
