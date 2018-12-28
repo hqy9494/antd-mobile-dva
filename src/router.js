@@ -5,6 +5,7 @@ import IndexPage from './routes/IndexPage';
 import Products from './routes/Products';
 import Reflash from './routes/Reflash/Reflash';
 import Tab from './routes/Tab/Tab';
+import Form from './routes/Form/Form';
 
 function RouterConfig({ history }) {
   return (
@@ -14,6 +15,7 @@ function RouterConfig({ history }) {
         <Route path="/Products" exact component={Products} />
         <Route path="/Reflash" exact component={Reflash} />
         <Route path="/Tab" exact component={Tab} />
+        <Route path="/Form" exact component={Form} />
       </Switch>
     </Router>
   );

@@ -23,7 +23,7 @@ import { get } from 'https';
 //     des: '不是所有的兼职汪都需要风吹日晒',
 //   },
 // ];
-const NUM_ROWS = 12;
+const NUM_ROWS = 12;   
 let pageIndex = 0;
 
 function genData(pIndex = 0) {
@@ -108,7 +108,7 @@ class Reflash extends Component{
         .catch(function (error) {
           console.log('error',error);
         });
-      }, 1000);
+      }, 500);
 
      
 
@@ -146,7 +146,7 @@ class Reflash extends Component{
         .catch(function (error) {
           console.log('error',error);
         });
-      }, 1000);
+      }, 500);
     };
   
     getOne  =() => {
