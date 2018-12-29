@@ -8,10 +8,10 @@ let goods = require('./appApi/goods.js')
 let adv = require('./appApi/adv.js')
 const cors = require('koa2-cors')
 app.use(cors())
+app.use(bodyParser());
 let router = new Router();
 app.use(router.routes())
 app.use(router.allowedMethods())
-app.use(bodyParser());
 router.use('/goods',goods.routes())
 router.use('/adv',adv.routes())
 //立即执行函数
@@ -23,20 +23,20 @@ router.use('/adv',adv.routes())
 
     // const Goods = mongoose.model('Goods')
     // let oneGoods = new Goods({name:'jspang13',prize:'30',image:'www.qq.com',content:'www.aa.com'})
-    // let oneForm = new Form({
-    //     money1:1231,
-    //     money2:33333,
-    //     control: "6666666",
-    //     files: [{
-    //     url: 'https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg',
-    //     id: '2121',
-    //   }, {
-    //     url: 'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg',
-    //     id: '2122',
-    //   }],
-    //   startTime: '2018-05-25 15:55:55',
-    //   endTime: '2018-05-28 15:55:55'
-    // })
+    let oneForm = new Form({
+        money1:1231,
+        money2:33333,
+        control: "6666666",
+        files: [{
+        url: 'https://zos.alipayobjects.com/rmsportal/PZUUCKTRIHWiZSY.jpeg',
+        id: '2121',
+      }, {
+        url: 'https://zos.alipayobjects.com/rmsportal/hqQWgTXdrlmVVYi.jpeg',
+        id: '2122',
+      }],
+      startTime: '2018-05-25 15:55:55',
+      endTime: '2018-05-28 15:55:55'
+    })
     // let oneAdvs = new Adv({img:'https://zos.alipayobjects.com/rmsportal/XmwCzSeJiqpkuMB.png',title:'30',des:'www.qq.com'})
     // oneForm.save().then(()=>{
     //     console.log('Goods插入成功')

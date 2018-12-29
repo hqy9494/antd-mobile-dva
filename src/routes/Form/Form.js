@@ -83,6 +83,7 @@ originbodyScrollY = document.getElementsByTagName('body')[0].style.overflowY;
         files: dt.files,
         startTime: dt.startTime,
         endTime: dt.endTime,
+        id: dt._id
       })
     })
     .catch(function (error) {
@@ -122,11 +123,12 @@ originbodyScrollY = document.getElementsByTagName('body')[0].style.overflowY;
         const that = this;
         this.props.form.validateFields({ force: true }, (error) => {
             if (!error) {
-              let dt = {...this.props.form.getFieldsValue(),startTime:this.state.startTime,endTime:this.state.endTime,files:this.state.files};
+              let dt = {...this.props.form.getFieldsValue(),startTime:this.state.startTime,endTime:this.state.endTime,files:this.state.files,id:this.state.id};
               console.log(dt)
               axios({
                 method: 'post',
                 url: 'http://localhost:3000/adv/updateForm',
+                data: dt
               })
               .then(function (response) {
                 let dt = response.data;
